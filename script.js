@@ -44,7 +44,36 @@ function sendMessage(){
 
     input.value="";
 
-    fakeReply(text);
+    typing.style.display = "block";
+
+try {
+
+    const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: text
+        })
+    });
+
+    const data = await response.json();
+
+    typing.style.display = "none";
+
+    addMessage("AI", data.reply);
+
+} catch (error) {
+
+    typing.style.display = "none";
+
+    addMessage(
+        "AI",
+        "⚠️ An samu matsala wajen haɗawa da Gemini AI."
+    );
+
+}
 
 }
 
