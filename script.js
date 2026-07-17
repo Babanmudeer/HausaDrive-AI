@@ -4,8 +4,7 @@ const sendBtn = document.getElementById("sendBtn");
 const clearBtn = document.getElementById("clearBtn");
 const typing = document.getElementById("typing");
 
-async function sendMessage(){
-    const div = document.createElement("div");
+function addMessage(sender, text) {   const div = document.createElement("div");
     div.className = sender === "AI" ? "message ai" : "message user";
 
     div.innerHTML = `
