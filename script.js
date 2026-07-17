@@ -4,7 +4,7 @@ const sendBtn = document.getElementById("sendBtn");
 const clearBtn = document.getElementById("clearBtn");
 const typing = document.getElementById("typing");
 
-function addMessage(sender, text) {
+async function sendMessage(){
     const div = document.createElement("div");
     div.className = sender === "AI" ? "message ai" : "message user";
 
@@ -17,7 +17,36 @@ function addMessage(sender, text) {
     chat.scrollTop = chat.scrollHeight;
 }
 
-function fakeReply(userText) {
+typing.style.display = "block";
+
+try {
+
+    const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: text
+        })
+    });
+
+    const data = await response.json();
+
+    typing.style.display = "none";
+
+    addMessage("AI", data.reply);
+
+} catch (error) {
+
+    typing.style.display = "none";
+
+    addMessage(
+        "AI",
+        "⚠️ An samu matsala wajen haɗawa da Gemini AI."
+    );
+
+}
 
     typing.style.display = "block";
 
@@ -34,7 +63,7 @@ function fakeReply(userText) {
 
 }
 
-function sendMessage(){
+async function sendMessage(){
 
     const text = input.value.trim();
 
