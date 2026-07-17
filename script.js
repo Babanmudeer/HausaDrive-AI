@@ -59,3 +59,17 @@ input.addEventListener("keypress",function(e){
     }
 
 });
+clearBtn.addEventListener("click", () => {
+
+    chat.innerHTML = `
+    <div class="message ai">
+        <strong>🤖 HausaDrive AI</strong>
+        <p>Sannu! Ni ne HausaDrive AI. Yaya zan taimake ka?</p>
+    </div>
+    `;
+
+});
+
+window.onload = () => {
+    input.focus();
+};
