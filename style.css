@@ -70,3 +70,60 @@ body{
     margin-bottom:10px;
     font-style:italic;
   Helveticelvetic
+.input-area{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.input-area input{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+.input-area button{
+    padding:14px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+#sendBtn{
+    background:#00ff88;
+    color:#000;
+}
+
+#sendBtn:hover{
+    background:#00cc6a;
+}
+
+#clearBtn{
+    background:#ef4444;
+    color:white;
+}
+
+#clearBtn:hover{
+    background:#dc2626;
+}
+
+@media (max-width:600px){
+
+.chat{
+    height:60vh;
+}
+
+.input-area{
+    flex-direction:column;
+}
+
+.input-area button{
+    width:100%;
+}
+
+    }
